@@ -10,6 +10,9 @@ $backup_options = get_input("backup_options");
 $ftp_enable = get_input("ftp-enable", false);
 $ftp = get_input("ftp", false);
 
+$ssh = get_input("ssh", false);
+$ssh_enable = get_input("ssh-enable", false);
+
 if (!$backup_options) {
     register_error(elgg_echo('backup-tool:settings:error:backup_options'));
 } else {
@@ -36,6 +39,10 @@ if (!$backup_options) {
     //save ftp settings
     elgg_set_plugin_setting('ftp_enable', $ftp_enable[0], 'backup-tool');
     elgg_set_plugin_setting('ftp', serialize($ftp), 'backup-tool');
+	
+	//Save SSH settings
+    elgg_set_plugin_setting('ssh_enable', $ssh_enable[0], 'backup-tool');
+    elgg_set_plugin_setting('ssh', serialize($ssh), 'backup-tool');
     
 }
 

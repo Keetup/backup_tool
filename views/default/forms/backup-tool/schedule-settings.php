@@ -105,6 +105,8 @@ echo elgg_view("forms/backup-tool/backup-options");
     </fieldset>
 </div>
 
+<?php //echo elgg_view('backup-tool/ssh-copy', $vars); ?>
+
 <div>
     <p>
         <?php
@@ -119,12 +121,6 @@ echo elgg_view("forms/backup-tool/backup-options");
 </div>
 
 <style>
-    .elgg-form-backup-tool-schedule-settings input[type=password],
-    .elgg-form-backup-tool-schedule-settings input[type=text]{
-        width: 20%;
-        font-size: 13px;
-        margin-right: 60%;
-        float:right;
-    }
+
 
 </style>

@@ -2,17 +2,21 @@
 
 function backup_tool_init() {
 
+	$plugins_path = elgg_get_plugins_path();
+    elgg_register_action("backup-tool/create", "{$plugins_path}backup-tool/actions/create.php", "admin");
+    elgg_register_action("backup-tool/download", "{$plugins_path}backup-tool/actions/download.php", "admin");
+    elgg_register_action("backup-tool/remove", "{$plugins_path}backup-tool/actions/remove.php", "admin");
+    elgg_register_action("backup-tool/ftp-test", "{$plugins_path}backup-tool/actions/ftp-test.php", "admin");
 
-    elgg_register_action("backup-tool/create", elgg_get_plugins_path() . "backup-tool/actions/create.php", "admin");
-    elgg_register_action("backup-tool/download", elgg_get_plugins_path() . "backup-tool/actions/download.php", "admin");
-    elgg_register_action("backup-tool/remove", elgg_get_plugins_path() . "backup-tool/actions/remove.php", "admin");
-    elgg_register_action("backup-tool/ftp-test", elgg_get_plugins_path() . "backup-tool/actions/ftp-test.php", "admin");
+    elgg_register_action("backup-tool/schedule-settings", "{$plugins_path}backup-tool/actions/schedule-settings.php", "admin");
 
-    elgg_register_action("backup-tool/schedule-settings", elgg_get_plugins_path() . "backup-tool/actions/schedule-settings.php", "admin");
-
-    elgg_register_library("backup_tool", elgg_get_plugins_path() . "backup-tool/lib/backup-tool.php");
-
-    elgg_extend_view('js/elgg', 'backup-tool/js');
+    elgg_register_library("backup_tool", "{$plugins_path}backup-tool/lib/backup-tool.php");
+	
+	elgg_register_css('backup_tool', elgg_get_simplecache_url('css', 'backup_tool'));
+	elgg_register_simplecache_view('css/backup_tool');	
+	
+	elgg_register_js('backup_tool', elgg_get_simplecache_url('js', 'backup_tool'));
+	elgg_register_simplecache_view('js/backup_tool');	
 
     //register cron jobs only if schedule was enabled
     if (elgg_get_plugin_setting('enable_schedule', 'backup-tool')) {
@@ -32,6 +36,7 @@ function backup_tool_init() {
 
     //register view of dialog of backup creation
     elgg_register_ajax_view('backup-tool/create-backup');
+	
 }
 
 function backup_tool_pagesetup() {

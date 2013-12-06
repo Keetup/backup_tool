@@ -7,7 +7,8 @@
 
 elgg_load_js('lightbox');
 elgg_load_css('lightbox');
-
+elgg_load_js('backup_tool');
+elgg_load_css('backup_tool');
 //get path to default backup dir specified in plugin settings
 $backup_dir = elgg_get_plugin_setting('backup_dir', 'backup-tool');
 
