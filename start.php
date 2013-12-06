@@ -11,8 +11,12 @@ function backup_tool_init() {
     elgg_register_action("backup-tool/schedule-settings", "{$plugins_path}backup-tool/actions/schedule-settings.php", "admin");
 
     elgg_register_library("backup_tool", "{$plugins_path}backup-tool/lib/backup-tool.php");
-
-    elgg_extend_view('js/elgg', 'backup-tool/js');
+	
+	elgg_register_css('backup_tool', elgg_get_simplecache_url('css', 'backup_tool'));
+	elgg_register_simplecache_view('css/backup_tool');	
+	
+	elgg_register_js('backup_tool', elgg_get_simplecache_url('js', 'backup_tool'));
+	elgg_register_simplecache_view('js/backup_tool');	
 
     //register cron jobs only if schedule was enabled
     if (elgg_get_plugin_setting('enable_schedule', 'backup-tool')) {
