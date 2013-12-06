@@ -60,7 +60,18 @@ $english = array(
     'backup-tool:options:site' => 'site folder (%s)',
     'backup-tool:options:data' => 'data folder (%s)',
     'backup-tool:options:db' => 'database dump',
-    
+	
+	'backup-tool:schedule:same_scheduled' => 'Same as Scheduled Period',
+	'backup-tool:schedule:ssh-settings' => 'SSH copy',
+	'backup-tool:schedule:ssh:enable' => 'Enable SSH copy',
+	'backup-tool:schedule:ssh-options' => 'When to syncronize',
+	'backup-tool:schedule:ssh-settings:text' => 'This will syncronize the last created backup, to another server throught SSH.',
+	'backup-tool:schedule:ssh-host' => 'Host',
+	'backup-tool:schedule:ssh-user' => 'User',
+	'backup-tool:schedule:ssh-password' => 'Password',
+	'backup-tool:schedule:ssh-dir' => 'Remote Directory',
+	'backuptool:schedule:ssh:testbutton' => 'Test Connection',
+	'backup-tool:schedule:ssh-port' => 'SSH Port',
 );
 
 add_translation('en', $english);

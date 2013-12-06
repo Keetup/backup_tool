@@ -105,6 +105,8 @@ echo elgg_view("forms/backup-tool/backup-options");
     </fieldset>
 </div>
 
+<?php //echo elgg_view('backup-tool/ssh-copy', $vars); ?>
+
 <div>
     <p>
         <?php

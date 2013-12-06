@@ -166,3 +166,60 @@ function backup_tool_upload_to_ftp($filename = NULL, $ftpfortest = false) {
 	// close the connection
 	ftp_close($conn);
 }
+
+
+function backup_tool_get_ssh_options() {
+	$defaults = array(
+		'options' => NULL,
+		'host' => NULL,
+		'port' => 22,
+		'user' => NULL,
+		'password' => NULL,
+		'dir' => NULL,
+	);
+	
+	$ssh = unserialize(elgg_get_plugin_setting('ssh', 'backup-tool'));
+	
+	if (is_array($ssh)) {
+		$ssh = array_filter($ssh);
+		return array_merge($defaults, $ssh);
+	}
+	
+	return $defaults;
+}
+
+function backup_tool_upload_to_ssh($filename) {
+	if (empty($filename)) {
+		return FALSE;
+	}
+	
+	if (FALSE == file_exists($filename)) {
+		return FALSE;
+	}
+	
+	
+	$ssh = backup_tool_get_ssh_options();
+	
+	$host = elgg_extract('host', $ssh);
+	$port = elgg_extract('port', $ssh);
+	$user = elgg_extract('user', $ssh);
+	$password = elgg_extract('password', $ssh);
+	
+	$destination_path = elgg_extract('dir', $ssh);
+	
+	if (empty($host) || empty($port) || empty($user) || empty($password)) {
+		return FALSE;
+	}
+	
+	$destination_path = ''; //TODO REMOVEs
+	if (empty($destination_path)) {
+		$destination_path  = './';
+	}
+	
+//	scp [[user@]from-host:]source-file [[user@]to-host:][destination-file]
+	
+	$command = "scp -P {$port} {$filename} {$user}@{$host}:{$destination_path}";
+	
+	//TODO: Give the password to scp
+	//TODO: FINISH THIS
+}

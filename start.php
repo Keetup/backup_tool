@@ -36,6 +36,7 @@ function backup_tool_init() {
 
     //register view of dialog of backup creation
     elgg_register_ajax_view('backup-tool/create-backup');
+	
 }
 
 function backup_tool_pagesetup() {
