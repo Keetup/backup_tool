@@ -39,8 +39,8 @@ function backup_tool_create_backup($options = array()) {
 	$datafolder = in_array('data', $options) ? elgg_get_data_path() : ''; //get path to sndata folder
 	$rootfolder = in_array('site', $options) ? elgg_get_root_path() : ''; //get path to Elgg folder
 	//get path to default backup dir specified in plugin settings
-	$backup_dir = elgg_get_plugin_setting('backup_dir', 'backup-tool');
-
+	$backup_dir = array_key_exists('backup_dir', $options) ? $options['backup_dir'] : elgg_get_plugin_setting('backup_dir', 'backup-tool');
+	
 	$dump_path = '';
 
 	//prepeare database dump

@@ -72,6 +72,7 @@ $english = array(
 	'backup-tool:schedule:ssh-dir' => 'Remote Directory',
 	'backuptool:schedule:ssh:testbutton' => 'Test Connection',
 	'backup-tool:schedule:ssh-port' => 'SSH Port',
+	'backup-tool:settings:monthly_backup_dir' => 'Monthly Backups directory',
 );
 
 add_translation('en', $english);
